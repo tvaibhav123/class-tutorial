@@ -11,7 +11,7 @@ const AddTask = () => {
    const [assignedTo, setAssignedTo] = useState("");
    const [tasks, setTasks] = useState([]);
    const [isError, setIsError] = useState(false);
-
+   const [error, setError] = useState("");
    const titleChangeHandler = (event) => {
       setTitle(event.target.value);
       //console.log(title)
@@ -31,6 +31,7 @@ const AddTask = () => {
 
    const submitHandler = (event) => {
       event.preventDefault();
+      setError("Age cannot be less than 1")
       setIsError(true);
       const task = {
          title: title,
@@ -108,7 +109,7 @@ const AddTask = () => {
          })}
          {
             isError ? 
-         <NewModal closeError = {setIsErrortofalse}></NewModal>: ""
+         <NewModal error={error} closeError = {setIsErrortofalse}></NewModal>: ""
       }
       </div>
    );
