@@ -1,12 +1,16 @@
+
 import React, { useState } from "react";
+import { Button, Form, Input, Label } from "reactstrap";
 import ViewTask from "./ViewTask";
+import '../App.css';
+import NewModal from "../NewModal";
 
 const AddTask = () => {
    const [title, setTitle] = useState("");
    const [description, setDescription] = useState("");
    const [assignedTo, setAssignedTo] = useState("");
-
    const [tasks, setTasks] = useState([]);
+   const [isError, setIsError] = useState(false);
 
    const titleChangeHandler = (event) => {
       setTitle(event.target.value);
@@ -21,13 +25,19 @@ const AddTask = () => {
       setAssignedTo(event.target.value);
    };
 
+   const setIsErrortofalse = () => {
+      setIsError(false)
+   }
+
    const submitHandler = (event) => {
       event.preventDefault();
+      setIsError(true);
       const task = {
          title: title,
          description: description,
          assignedTo: assignedTo,
-         complete: false
+         complete: false,
+         id: Math.random()
       };
 
       setTasks([...tasks, task]);
@@ -48,10 +58,10 @@ const AddTask = () => {
    return (
       <div>
          <h1>Add Task</h1>
-         <form onSubmit={submitHandler}>
+         <Form onSubmit={submitHandler}>
             <div>
-               <label htmlFor="title">Title</label>
-               <input
+               <Label htmlFor="title">Title</Label>
+               <Input
                   type="text"
                   name="title"
                   id="title"
@@ -60,8 +70,8 @@ const AddTask = () => {
                />
             </div>
             <div>
-               <label htmlFor="description">Description</label>
-               <input
+               <Label htmlFor="description">Description</Label>
+               <Input
                   type="text"
                   name="description"
                   id="description"
@@ -70,8 +80,8 @@ const AddTask = () => {
                />
             </div>
             <div>
-               <label htmlFor="assignedTo">Assigned To</label>
-               <input
+               <Label htmlFor="assignedTo">Assigned To</Label>
+               <Input
                   type="text"
                   name="assignedTo"
                   id="assignedTo"
@@ -79,13 +89,15 @@ const AddTask = () => {
                   onChange={assignedToChnageHandler}
                />
             </div>
-            <div>
-               <button type="submit">Add Task</button>
+            <div className="mt-4">
+               <Button color="danger" className="button-color" type="submit">Add Task</Button>
             </div>
-         </form>
+         </Form>
          {tasks.map((task) => {
             return (
                <ViewTask
+                  key={task.id}
+                  id={task.id}
                   title={task.title}
                   description={task.description}
                   assignedTo={task.assignedTo}
@@ -94,11 +106,15 @@ const AddTask = () => {
                />
             );
          })}
+         {
+            isError ? 
+         <NewModal closeError = {setIsErrortofalse}></NewModal>: ""
+      }
       </div>
    );
 };
 
-//TwoWay Binding
+// Two Way Binding
 // contorlled Components
 // clear the form
 // child to parent data

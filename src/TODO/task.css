@@ -1,0 +1,9 @@
+.title-font {
+    font-size: 2rem;
+} 
+.incomplete {
+    color:red;
+}
+.complete {
+    color:green;
+}

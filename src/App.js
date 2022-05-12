@@ -4,6 +4,7 @@ import Landing from './Landing.jsx';
 import Header from './header/Header';
 import Branding from './branding/Branding';
 import AddTask from './TODO/AddTask';
+import Counter from './header/Counter';
 
 function App() {
   const name = "Ankita";
@@ -13,6 +14,7 @@ function App() {
      {/*  <Landing />
       <Header />
       <Branding/> */}
+      {/* <Counter></Counter> */}
       <AddTask ></AddTask>
     </div>
   )
