@@ -5,6 +5,7 @@ import Header from './header/Header';
 import Branding from './branding/Branding';
 import AddTask from './TODO/AddTask';
 import Counter from './header/Counter';
+import AddUser from './Assignment-3/AddUser';
 
 function App() {
   const name = "Ankita";
@@ -16,6 +17,7 @@ function App() {
       <Branding/> */}
       {/* <Counter></Counter> */}
       <AddTask ></AddTask>
+      {/* <AddUser></AddUser> */}
     </div>
   )
 }

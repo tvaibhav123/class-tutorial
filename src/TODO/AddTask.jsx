@@ -31,8 +31,8 @@ const AddTask = () => {
 
    const submitHandler = (event) => {
       event.preventDefault();
-      setError("Age cannot be less than 1")
-      setIsError(true);
+      /* setError("Age cannot be less than 1")
+      setIsError(true); */
       const task = {
          title: title,
          description: description,
@@ -48,14 +48,14 @@ const AddTask = () => {
    };
 
    const taskCompleteHandler = (taskTitle, taskDescription, taskAssignedTo) => {
-       const taskWithCompletedInformation = tasks.map(task => {
-           if(task.title === taskTitle){
-               task.complete = true;
-           }
-           return task;
+      console.log(tasks, taskTitle)
+       const taskWithCompletedInformation = tasks.filter(task => {
+           return taskTitle !== task.title
        })
+       console.log(taskWithCompletedInformation)
        setTasks(taskWithCompletedInformation);
    };
+   
    return (
       <div>
          <h1>Add Task</h1>
@@ -107,10 +107,10 @@ const AddTask = () => {
                />
             );
          })}
-         {
+         {/* {
             isError ? 
          <NewModal error={error} closeError = {setIsErrortofalse}></NewModal>: ""
-      }
+      } */}
       </div>
    );
 };
