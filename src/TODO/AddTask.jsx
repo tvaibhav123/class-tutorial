@@ -14,7 +14,6 @@ const AddTask = () => {
    const [error, setError] = useState("");
    const titleChangeHandler = (event) => {
       setTitle(event.target.value);
-      //console.log(title)
    };
 
    const descriptionChangehandler = (event) => {
@@ -107,10 +106,6 @@ const AddTask = () => {
                />
             );
          })}
-         {/* {
-            isError ? 
-         <NewModal error={error} closeError = {setIsErrortofalse}></NewModal>: ""
-      } */}
       </div>
    );
 };

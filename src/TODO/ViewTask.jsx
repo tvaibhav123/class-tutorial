@@ -29,14 +29,6 @@ const ViewTask = (props) => {
                   <Button onClick={taskComplete}>Complete Task</Button>
                </CardBody>
             </Card>
-            {/* <ul>
-                    <li>ID: {props.id}</li>
-                    <li>Title: {props.title}</li>
-                    <li>Description: {props.description}</li>
-                    <li>AssignedTo: {props.assignedTo}</li>
-                    <li>IsCompleted?: {props.complete.toString()}</li>
-                </ul>
-                <button onClick={taskComplete}>Complete Task</button> */}
          </div>
       </div>
    );

@@ -9,7 +9,7 @@ const  NewModal = (props) =>  {
     }, []);
 
     const toggle = () => {
-      props.closeError()
+      props.toggle()
       setModal(!modal);
     }
   
@@ -17,9 +17,9 @@ const  NewModal = (props) =>  {
         <div>
           
           <Modal isOpen={modal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>ERROR</ModalHeader>
+            <ModalHeader toggle={toggle}>{props.heading}</ModalHeader>
             <ModalBody>
-              {props.error}
+              {props.children}
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={toggle}>Ok</Button>{' '}

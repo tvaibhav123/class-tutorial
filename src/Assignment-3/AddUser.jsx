@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Form,FormGroup,Label,Input,Button, Badge } from "reactstrap";
 import NewModal from "../NewModal";
 import ViewUser from "./ViewUser";
@@ -11,13 +11,23 @@ const AddUser = () => {
     const [users, setUsers] = useState([])
     const [error, setError] = useState(null);
     const [isError, setIsError] = useState(false);
+    const usernameRef = useRef();
+    const ageRef = useRef();
 
     const setIsErrortofalse = () => {
         setIsError(false)
      }
 
+    useEffect(() => {
+        setTimeout(()=>{
+            console.log("username", usernameRef.value)
+            console.log("age", ageRef.value)
+        },500)
+        
+    },[]);
     // Field Change Handlers
     const usernameChangeHandler = (event) => {
+        console.log(usernameRef.current.value)
         setUsername(event.target.value)
     }
     const ageChangeHandler = (event) => {
@@ -50,7 +60,9 @@ const AddUser = () => {
         }
     }
    return (
-      <div>
+       
+      <React.Fragment>
+          {/* {random()} */}
         <h1 className="text-center">Add User Form</h1>
          <Form onSubmit={submitHandler}>
             <FormGroup>
@@ -61,6 +73,7 @@ const AddUser = () => {
                   id="Username"
                   placeholder="Username"
                   onChange={usernameChangeHandler}
+                  innerRef={usernameRef}
                />
             </FormGroup>
             <FormGroup>
@@ -71,17 +84,18 @@ const AddUser = () => {
                   id="Age"
                   placeholder="Age"
                   onChange={ageChangeHandler}
+                  innerRef={ageRef}
                />
             </FormGroup>
             <Button type="submit" color="primary">Add User</Button>
          </Form>
          {/* {error ? <div className="pt-2"><Badge color="danger">{error}</Badge></div> : ""} */}
-         {isError ? <NewModal  error={error} closeError = {setIsErrortofalse}/> : ""}
+         {isError ? <NewModal heading={"Error"} toggle = {setIsErrortofalse}><div>{error}</div></NewModal> : ""}
          <h1 className="text-center pt-5">Added Users</h1>
          {users.map(user => {
              return <ViewUser user={user}/>
          })}
-      </div>
+      </React.Fragment>
    );
 };
 

@@ -6,6 +6,7 @@ import Branding from './branding/Branding';
 import AddTask from './TODO/AddTask';
 import Counter from './header/Counter';
 import AddUser from './Assignment-3/AddUser';
+import Parent from './PropsChildren/Parent';
 
 function App() {
   const name = "Ankita";
@@ -16,8 +17,9 @@ function App() {
       <Header />
       <Branding/> */}
       {/* <Counter></Counter> */}
-      <AddTask ></AddTask>
-      {/* <AddUser></AddUser> */}
+      {/* <AddTask ></AddTask> */}
+      <AddUser></AddUser>
+      <Parent/>
     </div>
   )
 }
