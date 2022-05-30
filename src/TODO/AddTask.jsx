@@ -1,11 +1,15 @@
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Form, Input, Label } from "reactstrap";
 import ViewTask from "./ViewTask";
 import '../App.css';
 import NewModal from "../NewModal";
+import UserContext from "../Context/UserContext";
 
 const AddTask = () => {
+
+   const context = useContext(UserContext)
+   console.log("context ---- ", context)
    const [title, setTitle] = useState("");
    const [description, setDescription] = useState("");
    const [assignedTo, setAssignedTo] = useState("");
@@ -21,6 +25,7 @@ const AddTask = () => {
    };
 
    const assignedToChnageHandler = (event) => {
+      console.log("Assigned To ", event.target.value);
       setAssignedTo(event.target.value);
    };
 
@@ -80,14 +85,14 @@ const AddTask = () => {
                />
             </div>
             <div>
-               <Label htmlFor="assignedTo">Assigned To</Label>
-               <Input
-                  type="text"
-                  name="assignedTo"
-                  id="assignedTo"
-                  value={assignedTo}
-                  onChange={assignedToChnageHandler}
-               />
+                  <Label for="assignedTo">Select</Label>
+                  <Input type="select" name="assignedTo" id="assignedTo"  onChange={assignedToChnageHandler}>
+                     {
+                       context.users.map(user => {
+                          return <option>{user.username} ({user.age})</option>
+                       }) 
+                     }
+                  </Input>
             </div>
             <div className="mt-4">
                <Button color="danger" className="button-color" type="submit">Add Task</Button>
