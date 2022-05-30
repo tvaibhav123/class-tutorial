@@ -5,11 +5,12 @@ import ViewTask from "./ViewTask";
 import '../App.css';
 import NewModal from "../NewModal";
 import UserContext from "../Context/UserContext";
+import { useSelector } from "react-redux";
 
 const AddTask = () => {
-
-   const context = useContext(UserContext)
-   console.log("context ---- ", context)
+   const reduxUsers = useSelector(state => state.user)
+   /* const context = useContext(UserContext) */
+   //console.log("context ---- ", context)
    const [title, setTitle] = useState("");
    const [description, setDescription] = useState("");
    const [assignedTo, setAssignedTo] = useState("");
@@ -88,7 +89,7 @@ const AddTask = () => {
                   <Label for="assignedTo">Select</Label>
                   <Input type="select" name="assignedTo" id="assignedTo"  onChange={assignedToChnageHandler}>
                      {
-                       context.users.map(user => {
+                       reduxUsers.users.map(user => {
                           return <option>{user.username} ({user.age})</option>
                        }) 
                      }
