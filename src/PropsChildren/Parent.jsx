@@ -17,9 +17,9 @@ const Parent = () => {
     return (
         <div>
             Hello from Parent
-            {ReactDOM.createPortal(<Child count={count}>
+            {/* {ReactDOM.createPortal(<Child count={count}>
                 <h1>CHILD COMPONENT</h1>
-            </Child>, document.getElementById("child"))}
+            </Child>, document.getElementById("child"))} */}
             
             {
                 isWarning ? 

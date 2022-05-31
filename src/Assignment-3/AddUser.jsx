@@ -1,6 +1,7 @@
 
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Form,FormGroup,Label,Input,Button, Badge } from "reactstrap";
 import UserContext from "../Context/UserContext";
 import NewModal from "../NewModal";
@@ -8,6 +9,7 @@ import { userActions } from "../Store";
 import ViewUser from "./ViewUser";
 
 const AddUser = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     /* const ctx = useContext(UserContext); */
     const reduxUsers = useSelector(state => state.user)
@@ -80,6 +82,9 @@ const AddUser = () => {
             /* ctx.onSetUsers([...users, user]) */
             dispatch(userActions.adduser(user))
             setUsers([...users, user]);
+            setTimeout(()=>{
+                navigate('/task')   
+            },1000)
         }else {
             if(username.length<=0 && age==0){
                 setIsError(true)
