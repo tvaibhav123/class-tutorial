@@ -1,3 +1,5 @@
+
+import { useState } from "react";
 import {
    Button,
    Card,
@@ -8,6 +10,8 @@ import {
 } from "reactstrap";
 import "./task.css";
 const ViewTask = (props) => {
+   
+   const [state, setstate] = useState("");
    const taskComplete = () => {
       props.onCompleteTask(props.title, props.description, props.assignedTo);
    };

@@ -11,13 +11,14 @@ const AddTask = () => {
    const reduxUsers = useSelector(state => state.user)
    /* const context = useContext(UserContext) */
    //console.log("context ---- ", context)
-   const [title, setTitle] = useState("");
+   const [title, setTitle] = useState("do homework");
    const [description, setDescription] = useState("");
    const [assignedTo, setAssignedTo] = useState("");
    const [tasks, setTasks] = useState([]);
    const [isError, setIsError] = useState(false);
    const [error, setError] = useState("");
    const titleChangeHandler = (event) => {
+      console.log(event.target.value)
       setTitle(event.target.value);
    };
 
@@ -38,6 +39,7 @@ const AddTask = () => {
       event.preventDefault();
       /* setError("Age cannot be less than 1")
       setIsError(true); */
+      console.log(event.target)
       const task = {
          title: title,
          description: description,
@@ -95,8 +97,11 @@ const AddTask = () => {
                      }
                   </Input>
             </div>
+            <div>
+               <Input type="email"></Input>
+            </div>
             <div className="mt-4">
-               <Button color="danger" className="button-color" type="submit">Add Task</Button>
+               {title && description && assignedTo ? <Button color="danger" className="button-color" type="submit">Add Task</Button> : <div></div>}
             </div>
          </Form>
          {tasks.map((task) => {

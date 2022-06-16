@@ -15,7 +15,7 @@ const ViewUser = (props) => {
         <React.Fragment>
             <Card>
                 <CardBody >
-                    <CardTitle className="d-flex"> <div className="flex-fill">{props.user.username} ({props.user.age} Years Old)</div>
+                    <CardTitle className="d-flex"> <div className="flex-fill"> {props.name}</div>
                     <Button color="danger" className="d-flex justify-content-end" onClick={deleteUserHandler}>Delete User</Button>
                     </CardTitle>
                 </CardBody>

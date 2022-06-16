@@ -9,6 +9,8 @@ import { userActions } from "../Store";
 import ViewUser from "./ViewUser";
 
 const AddUser = () => {
+
+    
     const navigate = useNavigate();
     const dispatch = useDispatch();
     /* const ctx = useContext(UserContext); */
@@ -16,6 +18,7 @@ const AddUser = () => {
     console.log("USERS FROM REDUX", reduxUsers)
     //console.log("CONTEXT from ADD USER ====", ctx)
     const [username,setUsername] = useState("");
+    const [name,setName] = useState("")
     const [age, setAge] = useState(0);
     const [users, setUsers] = useState([])
     const [error, setError] = useState(null);
@@ -59,6 +62,10 @@ const AddUser = () => {
 
     const setIsErrortofalse = () => {
         setIsError(false)
+     }
+
+     const nameChangeHandler = () => {
+         setName("hello ")
      }
      
    
@@ -134,6 +141,8 @@ const AddUser = () => {
          {reduxUsers.users.map(user => {
              return <ViewUser user={user} key={user.username}/>
          })}
+         <Button onClick={nameChangeHandler}>changeName</Button>
+         <ViewUser name={name}/>
       </React.Fragment>
    );
 };

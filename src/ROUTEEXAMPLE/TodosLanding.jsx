@@ -4,6 +4,10 @@ import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle } from 'react
 import TodosDetails from './TodosDetails';
 
 const TodosLanding = () => {
+
+    const name= "Vaibhav"
+    
+
     const [todos, setTodos] = useState([]);
     const navigate = useNavigate();
     useEffect(()=>{
@@ -14,7 +18,17 @@ const TodosLanding = () => {
             setTodos(json)
         }
         fetchData();
-    },[])
+        return(()=>{
+
+        })
+    },[name])
+    /* //componentdidmount() {
+
+    }
+    //componentdidupdate(){
+
+    }
+    //componentdidunmount */
 
     const openDetails = (id) => {
         navigate(`/todos/details/${id}`)

@@ -4,15 +4,6 @@ const initialState = {
     users: []
 }
 
-// const Auth = {
-//     useName: "asda",
-//     id:"asdfasd",
-// }
-
-// const cart = {
-//     products: [],
-//     totalAmount: 0
-// }
 
 
 const userSlice = createSlice({
@@ -28,6 +19,8 @@ const userSlice = createSlice({
         deleteuser (state,action) {
             console.log("FROM DELETE USERS",action.payload)
             state.users = state.users.filter(user => user.username !== action.payload);
+            localStorage.setItem('loggedInUser', {})
+            localStorage.removeItem("loggedInUser")
         },
         modifyuser () {
 

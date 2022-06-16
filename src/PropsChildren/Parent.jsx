@@ -13,6 +13,7 @@ const Parent = () => {
     }
     const handleCountRender = () => {
         setRenderCount(true)
+        throw new Error("Here is the BOMB")
     }
     return (
         <div>
